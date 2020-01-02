@@ -1,12 +1,21 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="title_activity_login">Sign in</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="app_name">Ai Là Triệu Phú</string>
+    <string name="ten_dang_nhap">Tên dăng nhập</string>
+    <string name="mat_khau">Mật khẩu</string>
+    <string name="dang_nhap">Đăng nhập</string>
+    <string name="quen_mat_khau">Quên mật khẩu</string>
+    <string name="dang_ky">Đăng ký</string>
+    <string name="dang_nhap_facebook">Đăng nhập bằng Facebook</string>
+    <string name="dang_nhap_google">Đăng nhập bằng Google</string>
+    <string name="QL_tai_khoan">Quản lý tài khoản</string>
+    <string name="mua_credit">Mua Credit</string>
+    <string name="dang_xuat">Đăng xuất</string>
+    <string name="huong_dan">Hướng dẫn</string>
+    <string name="bang_xep_hang">Bảng xếp hạng</string>
+    <string name="new_game">Trò chơi mới</string>
+    <string name="username">TextView</string>
+    <string name="help">HƯỚNG DẪN</string>
+    <string name="help_noi_dung">Mỗi lượt chơi gồm có 4 lĩnh vưc.Mỗi lĩnh vực gồm có 15 câu.Trả lời đúng 1 câu sẽ nhận được số điểm tương ứng với câu hỏi đã đưa ra.Nếu trả lời sai 1 câu sẽ trừ đi 1 mạng tương ứng với sô lượt chơi đã quy định.Số lượt chơi trong tối đa 5 lần, nếu mất đi 5 lượt chơi nó trò chơi sẽ dừng lại và kết thúc.Trong trò chơi có 4 quyền trợ giúp đó là: 50:50(bỏ đi 2 phương án sai), trợ giúp hỏi ý kiến khán giả(sẽ đưa ra đáp án chính xác với mức cao nhất), quyền trợ giúp gọi điện thoại (cho phép tối đa 30 giây để hỏi ý kiến để đưa ra đáp án chính xác nhất)</string>
+    <string name="email">Email</string>
+    <string name="xac_nhan_mat_khau">Xác nhận mật khẩu</string>
 </resources>

@@ -5,19 +5,20 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:label=""
         android:theme="@style/AppTheme">
-        <activity android:name=".ManHinhBanXepHang"></activity>
-        <activity android:name=".ManHinhLichSuChoi" />
-        <activity android:name=".ManHinhMuaCredit" />
-        <activity android:name=".ManHinhTraLoiActivity" />
-        <activity android:name=".ChonLinhVucActivity" />
-        <activity android:name=".ManHinhChinhActivity" />
-        <activity android:name=".QuanLiUserActivity" />
-        <activity android:name=".QuenMatKhauActivity" />
-        <activity android:name=".DangKiActivity" />
+        <activity android:name=".DangKy"></activity>
+        <activity android:name=".MuaCredit" />
+        <activity android:name=".LuatChoi" />
+        <activity android:name=".BieuDoTroGiupKhanGia" />
+        <activity android:name=".CauHoi" />
+        <activity android:name=".LinhVuc" />
+        <activity android:name=".ChonLinhVuc" />
+        <activity android:name=".ManHinhChinh" />
+        <activity android:name=".QuenMatKhau" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,5 +27,6 @@
             </intent-filter>
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

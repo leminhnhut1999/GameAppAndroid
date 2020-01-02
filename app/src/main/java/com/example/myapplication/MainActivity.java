@@ -1,64 +1,103 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.ConnectivityManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText username,password;
-    Button btnDangNhap,btnDangKy,btnThoat;
-
+    private SharedPreferences mPref;
+    private String sharePrefFile = "com.example.myapplication";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().hide();
-        Anhxa();
+        mPref = getSharedPreferences(sharePrefFile, MODE_PRIVATE);
 
+        //Kiểm tra Token trong Shared Preferences
+        //Nếu có Token thì chuyển qua màn hình Chính
 
-
-    }
-    private void Anhxa() {
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        btnDangNhap = findViewById(R.id.btnDangNhap);
-        btnDangKy = findViewById(R.id.btnDangKy);
-        btnThoat = findViewById(R.id.btnThoat);
-    }
-
-    public void DangNhap(View view) {
-
-        if(username.getText().length() !=0 && password.getText().length() !=0)
+        String token = mPref.getString("TOKEN",null);
+        int id = mPref.getInt("id",0);
+        if(token != null)
         {
-            if(username.getText().toString().equals("admin") && password.getText().toString().equals("123456"))
-            {
-                Toast.makeText(MainActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-                Intent intent= new Intent(MainActivity.this,ManHinhChinhActivity.class);
-                startActivity(intent);
-            }else{
-                Toast.makeText(MainActivity.this,"Đăng nhập thất bại",Toast.LENGTH_SHORT).show();
-            }
-        }else {
-            Toast.makeText(MainActivity.this,"Nhập đầy đủ thông tin",Toast.LENGTH_SHORT).show();
+            //Mở activity màn hình chính
+            Intent intent = new Intent(this, ManHinhChinh.class);
+            startActivity(intent);
         }
     }
 
-    public void DangKy(View view) {
-        Intent intent= new Intent(MainActivity.this ,DangKiActivity.class);
-        startActivity(intent);
-    }
+    public void dangNhap(View view)
+    {
+        EditText mTenDangNhap = findViewById(R.id.ten_dang_nhap_text);
+        EditText mMatKhau = findViewById(R.id.mat_khau_text);
 
-    public void QuenMAtKhau(View view) {
-        Intent intent= new Intent(this ,QuenMatKhauActivity.class);
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = null;
+
+        if (connMgr != null)
+        {
+            networkInfo = connMgr.getActiveNetworkInfo();
+        }
+
+        if (networkInfo != null && networkInfo.isConnected())
+        {
+            new FetchDangNhap(){
+                @Override
+                protected void onPostExecute(String s) {
+                    super.onPostExecute(s);
+                    try {
+                        JSONObject jsonObject = new JSONObject(s);
+                        // Lấy giá trị của key "success"
+                        boolean success = jsonObject.getBoolean("status");
+                        String message = jsonObject.getString("message");
+                        if(success) {
+                            // Lưu token vao Shared Preferences
+                            String token = jsonObject.getString("token");
+
+                            SharedPreferences.Editor editor = mPref.edit();
+                            editor.putString("TOKEN", token);
+                            editor.apply();
+
+                            // Mở activity Màn Hình Chính
+                            Intent intent = new Intent(MainActivity.this, ManHinhChinh.class);
+                            startActivity(intent);
+                        }
+                        else
+                            {
+                            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                            }
+
+                    }
+                    catch (JSONException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            }.execute("dang-nhap", "POST", mTenDangNhap.getText().toString(), mMatKhau.getText().toString());
+
+        }
+        else
+            {
+            Toast.makeText(this, "Khong the ket noi den server", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    public void Dangky(View view) {
+        Intent intent = new Intent(this,DangKy.class);
         startActivity(intent);
     }
 }

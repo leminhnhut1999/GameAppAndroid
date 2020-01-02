@@ -4,56 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuenMatKhauActivity">
+    tools:context=".QuenMatKhau">
+
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:id="@+id/imageView4"
+        android:layout_width="314dp"
+        android:layout_height="184dp"
+        android:layout_marginTop="92dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/username"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/duongvien"
+        android:id="@+id/editText3"
+        android:layout_width="284dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
         android:hint="Tên đăng nhập"
-        android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <EditText
-        android:id="@+id/password"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/duongvien"
+        android:id="@+id/editText5"
+        android:layout_width="284dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
         android:hint="Email"
-        android:imeActionLabel="@string/action_sign_in_short"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
     <Button
-        android:id="@+id/btnDangKy"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="#8B65CE"
-
-        android:text="Lấy mật khẩu"
-        android:textColor="#FCFBFB"
+        android:id="@+id/button4"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Lấy lại mật khẩu"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

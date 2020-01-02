@@ -4,119 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManHinhChinhActivity">
+    tools:context=".ManHinhChinh">
+
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        android:layout_marginTop="90dp"
+        android:id="@+id/imageView6"
+        android:layout_width="254dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/user" />
+        app:srcCompat="@drawable/anhdaidien" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="284dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Tên người chơi"
-        android:textColor="#673AB7"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:srcCompat="@drawable/diamond" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="2000"
-        android:textColor="#050505"
-        android:textSize="17dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <Button
-        android:id="@+id/btnDangNhap"
-        android:layout_width="250dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="15dp"
-        android:onClick="QuanLy"
-        android:backgroundTint="#4E5DB4"
-        android:text="Quản lí tài khoản"
-        android:textColor="#FCFBFB"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <Button
-        android:id="@+id/btnDangKy"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="#8B65CE"
-        android:text="Trò chơi mới"
-        android:onClick="ChonLinhVuc"
-        android:textColor="#FCFBFB"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDangNhap" />
-
-    <Button
-        android:id="@+id/btnLichSu"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="#94475F"
-        android:text="Lịch sử chơi"
-        android:onClick="LichSuChoi"
-        android:textColor="#FCFBFB"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDangKy" />
-
-    <Button
-        android:id="@+id/btnDiaLy"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="#068AF0"
-        android:onClick="XepHang"
-        android:text="Bảng xếp hạng"
-        android:textColor="#FCFBFB"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/radius_button3"
+        android:text="@string/QL_tai_khoan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLichSu" />
+        app:layout_constraintTop_toBottomOf="@+id/token_text" />
 
     <Button
-        android:id="@+id/btnMuaCredit"
-        android:layout_width="250dp"
+        android:id="@+id/btn_muacredit"
+        android:layout_width="284dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="#8F5D15"
-        android:onClick="MuaCredit"
-        android:text="Mua credit"
-        android:textColor="#FCFBFB"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/radius_button6"
+        android:text="@string/mua_credit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button8" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/radius_button7"
+        android:onClick="dangXuat"
+        android:text="@string/dang_xuat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_muacredit" />
+
+    <Button
+        android:id="@+id/btn_huongdan"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/radius_button4"
+        android:onClick="HuongDan"
+        android:text="@string/huong_dan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/troChoiMoi_button" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/radius_button5"
+        android:text="@string/bang_xep_hang"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_huongdan" />
+
+    <Button
+        android:id="@+id/troChoiMoi_button"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/radius_button1"
+        android:text="@string/new_game"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <TextView
+        android:id="@+id/thong_bao_text"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDiaLy" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/token_text"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/username"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 </androidx.constraintlayout.widget.ConstraintLayout>
