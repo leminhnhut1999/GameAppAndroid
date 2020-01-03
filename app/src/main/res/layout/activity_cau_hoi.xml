@@ -113,6 +113,7 @@
         app:layout_constraintEnd_toStartOf="@+id/img_tuvan"
         app:layout_constraintStart_toEndOf="@+id/img_5050"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
+        android:onClick="tro_giup_goi_dien_thoai"
         app:srcCompat="@drawable/trogiupcall" />
 
     <ImageView
@@ -122,6 +123,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="tro_giup_khan_gia"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:srcCompat="@drawable/trogiupkhangia" />
 
