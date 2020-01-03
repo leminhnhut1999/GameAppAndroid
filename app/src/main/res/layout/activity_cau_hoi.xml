@@ -39,6 +39,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/radius_button8"
         android:text="Button"
+        android:onClick="selectA"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,13 +54,14 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/radius_button8"
         android:text="Button"
+        android:onClick="selectB"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_CauA" />
 
     <Button
-        android:id="@+id/btn_CacC"
+        android:id="@+id/btn_CauC"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -67,6 +69,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/radius_button8"
         android:text="Button"
+        android:onClick="selectC"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,21 +84,22 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/radius_button8"
         android:text="Button"
+        android:onClick="selectD"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_CacC" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_CauC" />
 
     <ImageView
         android:id="@+id/img_5050"
         android:layout_width="80dp"
         android:layout_height="60dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="16dp"
         android:onClick="tro_giup_5050"
-        app:layout_constraintBottom_toBottomOf="@+id/img_trogiupcall"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_trogiupcall"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/img_trogiupcall"
+        app:layout_constraintStart_toEndOf="@+id/img_rollback"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:srcCompat="@drawable/trogiup5050" />
 
     <ImageView
@@ -104,22 +108,21 @@
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_tuvan"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/img_tuvan"
-        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toEndOf="@+id/img_5050"
-        app:layout_constraintTop_toTopOf="@+id/img_tuvan"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:srcCompat="@drawable/trogiupcall" />
 
     <ImageView
         android:id="@+id/img_tuvan"
         android:layout_width="80dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="36dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pgB_time"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:srcCompat="@drawable/trogiupkhangia" />
 
     <ProgressBar
@@ -215,5 +218,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/vang" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.72" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="617dp" />
+
+    <ImageView
+        android:id="@+id/img_rollback"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="rollback"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:srcCompat="@drawable/rollback" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

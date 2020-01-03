@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,7 +24,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class CauHoi extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>  {
-    private Button btn_Caua, btn_Caub, btn_Cauc, btn_Caud;
+//    private Button btn_Caua, btn_Caub, btn_Cauc, btn_Caud;
+    private Button [] buttons=new Button[4];
     private TextView txt_Noidung;
     TextView txt_thoigian;
 
@@ -33,19 +35,19 @@ public class CauHoi extends AppCompatActivity implements LoaderManager.LoaderCal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cau_hoi);
 
-        btn_Caua = findViewById(R.id.btn_CauA);
-        btn_Caub = findViewById(R.id.btn_CauB);
-        btn_Cauc = findViewById(R.id.btn_CacC);
-        btn_Caud = findViewById(R.id.btn_CauD);
+        buttons[0] = findViewById(R.id.btn_CauA);
+        buttons[1] = findViewById(R.id.btn_CauB);
+        buttons[2] = findViewById(R.id.btn_CauC);
+        buttons[3] = findViewById(R.id.btn_CauD);
         txt_Noidung = findViewById(R.id.txt_CauHoi);
+        txt_thoigian = (TextView)findViewById(R.id.textView4);
 
         if(getSupportLoaderManager().getLoader(0)!=null)
         {
             getSupportLoaderManager().initLoader(0, null, this);
         }
         getSupportLoaderManager().restartLoader(0, null, this);
-
-        txt_thoigian = (TextView)findViewById(R.id.textView4);
+        txt_thoigian.setText("hi");
         CountDownTimer countDownTimer;
         countDownTimer = new CountDownTimer(30000,1000) {
             @Override
@@ -56,8 +58,8 @@ public class CauHoi extends AppCompatActivity implements LoaderManager.LoaderCal
             @Override
             public void onFinish() {
                 txt_thoigian.setText("Hết Giờ");
-
             }
+
         };
         countDownTimer.start();
     }
@@ -97,10 +99,11 @@ public class CauHoi extends AppCompatActivity implements LoaderManager.LoaderCal
        }
         //Hiển thị câu hỏi lên các button
         txt_Noidung.setText(cauHoiArrayList.get(0).getNoi_dung());
-        btn_Caua.setText(cauHoiArrayList.get(0).getPhuong_an_a());
-        btn_Caub.setText(cauHoiArrayList.get(0).getPhuong_an_b());
-        btn_Cauc.setText(cauHoiArrayList.get(0).getPhuong_an_c());
-        btn_Caud.setText(cauHoiArrayList.get(0).getPhuong_an_d());
+        buttons[0].setText(cauHoiArrayList.get(0).getPhuong_an_a());
+        buttons[1].setText(cauHoiArrayList.get(0).getPhuong_an_b());
+        buttons[2].setText(cauHoiArrayList.get(0).getPhuong_an_c());
+        buttons[3].setText(cauHoiArrayList.get(0).getPhuong_an_d());
+
     }
 
     public void tro_giup_khan_gia(View view)
@@ -110,16 +113,112 @@ public class CauHoi extends AppCompatActivity implements LoaderManager.LoaderCal
     }
 
     public void tro_giup_5050(View view) {
-        Button button = findViewById(R.id.btn_CauA);
-        button.setVisibility(View.INVISIBLE);
-        Button button2 = findViewById(R.id.btn_CauB);
-        button2.setVisibility(View.INVISIBLE);
-        ImageView button3 = findViewById(R.id.img_5050);
-        button3.setVisibility(View.INVISIBLE);
+        String dapAn = cauHoiArrayList.get(0).getDapan();
+        String cauTraLoi;
+        for(int i=0;i<4;i++){
+            cauTraLoi=buttons[i].getText().toString();
+            if(dapAn.equals(cauTraLoi)){
+                if(i==0){
+                    setInvisibility(1,3);
+                }
+                if(i==1){
+                    setInvisibility(0,2);
+                }
+                if(i==2){
+                    setInvisibility(0,3);
+                }
+                if(i==3){
+                    setInvisibility(0,1);
+                }
+                break;
+            }
+        }
+
+    }
+    public void setInvisibility(int a, int b){
+        buttons[a].setVisibility(View.INVISIBLE);
+        buttons[b].setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<String> loader) {
 
+    }
+
+    public void rollback(View view) {
+
+        Intent intentid = getIntent();
+        ImageView imageView = findViewById(R.id.img_rollback);
+        imageView.setVisibility(View.INVISIBLE);
+        int lv_id = intentid.getIntExtra("Id_linh_vuc",0);
+        Intent intent = new Intent(this,CauHoi.class);
+        intent.putExtra("Id_linh_vuc",lv_id);
+        startActivity(intent);
+
+    }
+
+
+    public void selectA(View view) {
+        String dapAn = cauHoiArrayList.get(0).getDapan();
+        String cauTraLoi = buttons[0].getText().toString();
+        Intent intent = new Intent(this,ChonLinhVuc.class);
+        if(dapAn.equals(cauTraLoi)){
+            buttons[0].setBackgroundColor(getColor(R.color.Blue));
+            Toast.makeText(this,"Bạn đã trả lời đúng",Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        }
+        else{
+           buttons[0].setBackgroundColor(getColor(R.color.Red));
+            Toast.makeText(this,"Bạn đã trả lời sai",Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        }
+    }
+
+    public void selectD(View view) {
+        String dapAn = cauHoiArrayList.get(0).getDapan();
+        String cauTraLoi = buttons[3].getText().toString();
+        Intent intent = new Intent(this,ChonLinhVuc.class);
+        if(dapAn.equals(cauTraLoi)){
+            buttons[3].setBackgroundColor(getColor(R.color.Blue));
+            Toast.makeText(this,"Bạn đã trả lời đúng",Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        }
+        else{
+            buttons[3].setBackgroundColor(getColor(R.color.Red));
+            Toast.makeText(this,"Bạn đã trả lời sai",Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        }
+    }
+
+    public void selectC(View view) {
+        String dapAn = cauHoiArrayList.get(0).getDapan();
+        String cauTraLoi = buttons[2].getText().toString();
+        Intent intent = new Intent(this,ChonLinhVuc.class);
+        if(dapAn.equals(cauTraLoi)){
+            buttons[2].setBackgroundColor(getColor(R.color.Blue));
+            Toast.makeText(this,"Bạn đã trả lời đúng",Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        }
+        else{
+            buttons[2].setBackgroundColor(getColor(R.color.Red));
+            Toast.makeText(this,"Bạn đã trả lời sai",Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        }
+    }
+
+    public void selectB(View view) {
+        String dapAn = cauHoiArrayList.get(0).getDapan();
+        String cauTraLoi = buttons[1].getText().toString();
+        Intent intent = new Intent(this,ChonLinhVuc.class);
+        if(dapAn.equals(cauTraLoi)){
+            buttons[1].setBackgroundColor(getColor(R.color.Blue));
+            Toast.makeText(this,"Bạn đã trả lời đúng",Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        }
+        else{
+            buttons[1].setBackgroundColor(getColor(R.color.Red));
+            Toast.makeText(this,"Bạn đã trả lời sai",Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        }
     }
 }
