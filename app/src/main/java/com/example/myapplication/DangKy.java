@@ -56,7 +56,7 @@ public class DangKy extends AppCompatActivity {
             }
             else
             {
-                String url = "http://10.0.3.2:8000/api/dang-ky";
+                String url = "http://10.0.2.2:8000/api/dang-ky";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>(){
                     @Override
                     public void onResponse(String response)
